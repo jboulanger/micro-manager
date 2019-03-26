@@ -22,7 +22,8 @@ public interface InspectorPanelController {
    void attachDataViewer(DataViewer viewer);
    void detachDataViewer();
    boolean isVerticallyResizableByUser();
-   boolean initiallyExpand();
+   boolean getExpanded();
+   void setExpanded(boolean state);
    
    
 }

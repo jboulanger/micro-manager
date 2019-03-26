@@ -47,6 +47,7 @@ import org.micromanager.display.DisplayDidShowImageEvent;
  */
 public final class PlaneMetadataInspectorPanelController extends AbstractInspectorPanelController {
    private final JPanel panel_ = new JPanel();
+   private boolean expanded_ = false;
    private DataViewer viewer_;
 
    // Access: from background executor only
@@ -212,9 +213,13 @@ public final class PlaneMetadataInspectorPanelController extends AbstractInspect
    }
    
    @Override
-   public boolean initiallyExpand() {
-      return false;
-      // TODO: remember last setting and restore
+   public boolean getExpanded() {
+      return expanded_;
+   }
+   
+   @Override 
+   public void setExpanded(boolean state) {
+      expanded_ = state;
    }
    
    private void updateMetadata(Metadata metadata, boolean evenIfUnchanged) {

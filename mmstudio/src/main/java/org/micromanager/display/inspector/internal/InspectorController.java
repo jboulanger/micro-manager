@@ -287,7 +287,7 @@ public final class InspectorController
       sections_.clear();
       
       if (viewer != null && !viewer.isClosed()) {
-         List<InspectorPanelPlugin> plugins = new ArrayList<InspectorPanelPlugin>(
+         List<InspectorPanelPlugin> plugins = new ArrayList<>(
                MMStudio.getInstance().plugins().getInspectorPlugins().values());
          Collections.sort(plugins, new Comparator<InspectorPanelPlugin>() {
             @Override
@@ -312,7 +312,7 @@ public final class InspectorController
                           = plugin.createPanelController();
                   InspectorSectionController section
                           = InspectorSectionController.create(this, panelController,
-                                  panelController.initiallyExpand());
+                                  panelController.getExpanded());
                   panelController.addInspectorPanelListener(section);
                   locatedSection = new SectionInfo(panelController, section, plugin);
                }

@@ -41,6 +41,7 @@ public final class CommentsInspectorPanelController
    private final JTextArea summaryTextArea_;
    private final JTextArea planeTextArea_;
    private Coords editingCoords_;
+   private boolean expanded_ = false;
    private boolean summaryCommentEdited_;
    private boolean planeCommentEdited_;
    private boolean programmaticallySettingText_ = false;
@@ -157,9 +158,13 @@ public final class CommentsInspectorPanelController
    }
    
    @Override
-   public boolean initiallyExpand() {
-      return false;
-      // TODO: remember last setting and restore
+   public boolean getExpanded() {
+      return expanded_;
+   }
+   
+   @Override 
+   public void setExpanded(boolean state) {
+      expanded_ = state;
    }
 
    private void saveSummaryComments() {

@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import javax.swing.JComponent;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -56,6 +55,7 @@ public final class OverlaysInspectorPanelController
    private final List<OverlayConfigPanelController> configPanelControllers_ =
          new ArrayList<OverlayConfigPanelController>();
 
+   private boolean expanded_ = false;
    private DisplayWindow viewer_;
 
    public static OverlaysInspectorPanelController create() {
@@ -189,13 +189,16 @@ public final class OverlaysInspectorPanelController
    public JPanel getPanel() {
       return panel_;
    }
-
+   
    @Override
-   public boolean initiallyExpand() {
-      return false;
-      // TODO: remember last setting and restore
+   public boolean getExpanded() {
+      return expanded_;
    }
-
+   
+   @Override 
+   public void setExpanded(boolean state) {
+      expanded_ = state;
+   }
    @Subscribe
    public void onEvent(DisplayWindowDidAddOverlayEvent e) {
       addConfigPanel(e.getOverlay());

@@ -59,6 +59,7 @@ public class IntensityInspectorPanelController
    private static final String COLOR_BLIND_FRIENDLY = "Colorblind-friendly";
    private static final String RGBCMYW = "RGBCMYW";
    private static final String CUSTOM = "Custom";
+   private Boolean expanded_ = true;
    
    private final JPanel panel_ = new JPanel();
 
@@ -108,7 +109,7 @@ public class IntensityInspectorPanelController
       return new IntensityInspectorPanelController();
    }
 
-   private IntensityInspectorPanelController() {
+   public IntensityInspectorPanelController() {
       setUpGearMenu();
       setUpGeneralControlPanel();
       setUpChannelHistogramsPanel(0);
@@ -512,8 +513,13 @@ public class IntensityInspectorPanelController
    }
        
    @Override
-   public boolean initiallyExpand() {
-      return true;
+   public boolean getExpanded() {
+      return expanded_;
+   }
+   
+   @Override 
+   public void setExpanded(boolean state) {
+      expanded_ = state;
    }
 
    @Subscribe

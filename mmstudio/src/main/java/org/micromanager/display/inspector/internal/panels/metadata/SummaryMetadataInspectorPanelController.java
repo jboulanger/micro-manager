@@ -48,6 +48,8 @@ import org.micromanager.data.DataProviderHasNewSummaryMetadataEvent;
  */
 public class SummaryMetadataInspectorPanelController extends AbstractInspectorPanelController {
    private final JPanel panel_ = new JPanel();
+   private boolean expanded_ = false;
+   
    private DataProvider dataProvider_;
 
    private WeakReference<SummaryMetadata> previousMetadataRef_ =
@@ -142,12 +144,6 @@ public class SummaryMetadataInspectorPanelController extends AbstractInspectorPa
       return true;
    }
       
-   @Override
-   public boolean initiallyExpand() {
-      return false;
-      // TODO: remember last setting and restore
-   }
-
    private void updateSummaryMetadata(SummaryMetadata summaryMetadata) {
       if (summaryMetadata == previousMetadataRef_.get()) {
          return;
@@ -184,6 +180,16 @@ public class SummaryMetadataInspectorPanelController extends AbstractInspectorPa
       });
    }
 
+   @Override
+   public boolean getExpanded() {
+      return expanded_;
+   }
+   
+   @Override 
+   public void setExpanded(boolean state) {
+      expanded_ = state;
+   }
+   
    @Subscribe
    public void onEvent(DataProviderHasNewSummaryMetadataEvent e) {
       updateSummaryMetadata(e.getSummaryMetadata());

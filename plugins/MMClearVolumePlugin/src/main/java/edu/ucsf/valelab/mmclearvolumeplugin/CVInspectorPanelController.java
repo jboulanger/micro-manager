@@ -60,6 +60,7 @@ public final class CVInspectorPanelController extends AbstractInspectorPanelCont
    private RangeSlider xSlider_, ySlider_, zSlider_;
    private ScrollerPanel sp_;
    private boolean animating_ = false;
+   private boolean expanded_ = true;
    
    //private final String USE_FOR_ALL = "Use for all";
    //private final AtomicBoolean attachToNew_ = new AtomicBoolean(false);
@@ -320,8 +321,12 @@ public final class CVInspectorPanelController extends AbstractInspectorPanelCont
    }
       
    @Override
-   public boolean initiallyExpand() {
-      return true;
+   public boolean getExpanded() {
+      return expanded_;
    }
-
+   
+   @Override 
+   public void setExpanded(boolean state) {
+      expanded_ = state;
+   }
 }
